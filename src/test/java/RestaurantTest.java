@@ -2,6 +2,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -66,6 +68,15 @@ class RestaurantTest {
 
         assertThrows(itemNotFoundException.class,
                 ()->restaurant.removeFromMenu("French fries"));
+    }
+
+    @Test
+    public void getting_order_value_should_return_total_value() {
+        List<Item> itemsList = new ArrayList<Item>();
+        itemsList.add(new Item("Butter Chicken", 250));
+        itemsList.add(new Item("Butter Naan", 50));
+        assertEquals(300, restaurant.getOrderValue(itemsList));
+
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
